@@ -67,6 +67,7 @@ int main(void)
         // Print a prompt
         printf("%s", PROMPT);
         fflush(stdout); // Force the line above to print
+        printf()
 
         // Read input from keyboard
         fgets(commandline, sizeof commandline, stdin);
@@ -101,6 +102,22 @@ int main(void)
         #endif
         
         /* Add your code for implementing the shell's logic here */
+        if (strcmp(args[0], "cd") == 0) {
+            if(chdir(args[1] == -1)) {
+                perror("chdir");
+            }
+            continue;
+        }
+        int rc = fork();
+        if(rc < 0) {
+            fprintf(stderr,"fork failed\n");
+        } else if (rc == 0 ) {
+            printf("Hello child \n");
+            execvp(args[0], &args[0]);
+        } else {
+            wait(NULL);
+            printf("Hi Parent here! \n");
+        }
         
     }
 
