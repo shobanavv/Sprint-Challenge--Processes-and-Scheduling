@@ -26,5 +26,6 @@ Add your answers inline, below, with your pull request.
 
 3. Describe the job of the Scheduler in the OS in general.
     It selects processes from the queue and loads them into memory for execution. Process loads into the memory for CPU scheduling. The primary objective of the job scheduler is to provide a balanced mix of jobs, such as I/O bound and processor bound. It also controls the degree of multiprogramming.
-    
+
 4. Describe the benefits of the MLFQ over a plain Round-Robin scheduler.
+    When users want to manage different time slices for different processes, a modern version of this idea can be found with the MLQ (Multi Level Queue) scheduling algorithm where you can manage the different queues with different quantum. Each quantum can also be dynamically computed according to several parameters (CPU load, number of processes in each queue, etc...).
